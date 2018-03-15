@@ -2,14 +2,17 @@ package com.threaddynamics.chp2.manish;
 
 import java.util.Scanner;
 
-public class DeleteDuplicateNodeLinkedList {
+public class Problem2 {
 
 	public static void main(String[] args) {
 		Node first = null;
-		System.out.println("Provide Linked list data number of record:");
+
 		Scanner scanner = new Scanner(System.in);
 		int num;
 		Node last;
+		System.out.println("Provide nth:");
+		int nth = scanner.nextInt();
+		System.out.println("Provide Linked list data number of record:");
 		int n = scanner.nextInt();
 		System.out.println("Enter linked list element");
 		for (int i = 0; i < n; i++) {
@@ -18,18 +21,21 @@ public class DeleteDuplicateNodeLinkedList {
 				first = new Node(num);
 			else
 				first.appendToTail(num);
-
-			System.out.println(num);
 		}
 		scanner.close();
 		Node node = first;
+		Node nNode = null;
 		while (node != null) {
-			while (node.getNext() != null) {
-				if (node.getData() == node.getNext().getData()) {
-					node.setNext(node.getNext());
-				}
-			}
+			if (nth == 0) {
+				if(nNode ==null)
+					nNode = first;
+				else
+					nNode = nNode.getNext();
+			} else
+				nth--;
+			node = node.getNext();
 		}
+		System.out.println(nNode.getData());
 	}
-}
 
+}
