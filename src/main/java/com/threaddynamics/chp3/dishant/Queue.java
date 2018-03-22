@@ -14,6 +14,15 @@ public class Queue<E> {
             last = node;
         }
     }
+    
+    public E remove(){
+        E data = null;
+        if(last != null){
+            data = first.data;
+            first = first.next;
+        }
+        return data;
+    }
 
     public String toString() {
         Node<E> ptr = first;
@@ -55,6 +64,7 @@ public class Queue<E> {
         queue.add(3);
         queue.add(4);
         
+        System.out.println(queue.remove());
         System.out.println(queue);
     }
 
